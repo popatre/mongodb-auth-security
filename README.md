@@ -2,7 +2,7 @@
 
 -   Mongodb
 -   Mongoose
--   Mongoose-encryption
+-   md5 hashing
 -   EJS
 -   Express
 -   Node
