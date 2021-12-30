@@ -2,7 +2,9 @@
 
 -   Mongodb
 -   Mongoose
--   bcrypt - encryption & salting
 -   EJS
 -   Express
 -   Node
+-   Passport.js
+-   Passport local mongoose
+-   Express session
