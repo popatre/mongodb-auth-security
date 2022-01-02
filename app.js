@@ -67,6 +67,14 @@ app.get(
     }
 );
 
+app.get("/submit", (req, res, next) => {
+    if (req.isAuthenticated()) {
+        res.render("submit");
+    } else {
+        res.redirect("/login");
+    }
+});
+
 app.get("/login", (req, res, next) => {
     res.render("login");
 });
@@ -75,11 +83,14 @@ app.get("/register", (req, res, next) => {
 });
 
 app.get("/secrets", (req, res, next) => {
-    if (req.isAuthenticated()) {
-        res.render("secrets");
-    } else {
-        res.redirect("/login");
-    }
+    User.find({ secret: { $ne: null } }, (err, foundUsers) => {
+        if (err) console.log(err);
+        else {
+            if (foundUsers) {
+                res.render("secrets", { usersWithSecrets: foundUsers });
+            }
+        }
+    });
 });
 
 app.get("/logout", (req, res, next) => {
@@ -117,6 +128,22 @@ app.post("/login", (req, res) => {
             passport.authenticate("local")(req, res, () => {
                 res.redirect("/secrets");
             });
+        }
+    });
+});
+
+app.post("/submit", (req, res) => {
+    const submittedSecret = req.body.secret;
+
+    User.findById(req.user.id, (err, foundUser) => {
+        if (err) console.log(err);
+        else {
+            if (foundUser) {
+                foundUser.secret = submittedSecret;
+                foundUser.save(() => {
+                    res.redirect("/secrets");
+                });
+            }
         }
     });
 });
