@@ -10,7 +10,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 app.set("view engine", "ejs");
-const port = 3000;
 
 app.use(
     session({
@@ -148,6 +147,11 @@ app.post("/submit", (req, res) => {
     });
 });
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 3000;
+}
+
 app.listen(port, () => {
-    console.log("server running on port 3000");
+    console.log("server running sucessfully!");
 });
