@@ -35,7 +35,10 @@ passport.deserializeUser(function (id, done) {
     });
 });
 
-const absoluteUri = "https://jmg-secrets.herokuapp.com";
+let absoluteUri = process.env.DEV;
+if (process.env.NODE_ENV == "production") {
+    absoluteUri = "https://jmg-secrets.herokuapp.com";
+}
 
 passport.use(
     new GoogleStrategy(

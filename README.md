@@ -1,6 +1,6 @@
 # Secrets
 
-A simple server rendered app for users to submit their secrets anonymously.
+A simple server rendered app for users to submit their secrets anonymously.[](https://whats.new/)
 
 Built to practice user authentication methods and six levels of security.
 
