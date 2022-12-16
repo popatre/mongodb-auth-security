@@ -37,7 +37,7 @@ passport.deserializeUser(function (id, done) {
 
 let absoluteUri = process.env.DEV;
 if (process.env.NODE_ENV == "production") {
-    absoluteUri = "https://jmg-secrets.herokuapp.com";
+    absoluteUri = "https://secrets-auth.onrender.com";
 }
 
 passport.use(

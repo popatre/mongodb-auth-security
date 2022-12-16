@@ -4,7 +4,7 @@ A simple server rendered app for users to submit their secrets anonymously.[](ht
 
 Built to practice user authentication methods and six levels of security.
 
-A hosted version can be found here: https://jmg-secrets.herokuapp.com/
+A hosted version can be found here: https://secrets-auth.onrender.com/
 
 # Security and Authentication
 
